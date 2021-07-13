@@ -1,10 +1,13 @@
 pipeline {
     agent { label 'myp1' }
+    parameters {
+        string(name: 'BRANCH_TO_BE_BUILD', defaultValue: 'developer', description: 'add branch details')
+    }
     triggers { upstream(upstreamProjects: 'gol-daybuild', threshold: hudson.model.Result.SUCCESS) }
     stages {
         stage('SCM') {
             steps {
-                echo $BRANCH_TO_BE_BUILD
+                echo "BRANCH_TO_BE_BUILD ${BRANCH_TO_BE_BUILD}"
                 git 'https://github.com/wakaleo/game-of-life.git'
             }
         }
