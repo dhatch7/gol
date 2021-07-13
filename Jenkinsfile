@@ -7,8 +7,8 @@ pipeline {
     stages {
         stage('SCM') {
             steps {
-                echo "BRANCH_TO_BE_BUILD ${BRANCH_TO_BE_BUILD}"
-                git 'https://github.com/wakaleo/game-of-life.git'
+                echo "${BRANCH_TO_BE_BUILD}"
+        
             }
         }
         stage('Build') {
