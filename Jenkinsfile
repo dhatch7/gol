@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh "mvn: ${BUILD_TYPE}"
+                sh script: "mvn ${BUILD_TYPE}"
             }
         }
     }
