@@ -1,6 +1,7 @@
 pipeline {
     agent { label 'myp1' }
     triggers { cron('H * * * 1-5') }
+    triggers { upstream(upstreamProjects: 'gol-daybuild', threshold: hudson.model.Result.SUCCESS) }
     stages {
         stage('SCM') {
             steps {
